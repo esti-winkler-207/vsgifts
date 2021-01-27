@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_GIFTGROUPModelStoreContainer" CdmEntityContainer="DB_GIFTGROUPEntities41">
+    <EntitySetMapping Name="category">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="name_category" ColumnName="name_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gifts">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.gifts">
+        <MappingFragment StoreEntitySet="gifts">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="receiving_gift" ColumnName="receiving_gift" />
+          <ScalarProperty Name="id_gift" ColumnName="id_gift" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.groups">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="name_group" ColumnName="name_group" />
+          <ScalarProperty Name="id_manager_group" ColumnName="id_manager_group" />
+          <ScalarProperty Name="collect_end" ColumnName="collect_end" />
+          <ScalarProperty Name="password_group" ColumnName="password_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="manager">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.manager">
+        <MappingFragment StoreEntitySet="manager">
+          <ScalarProperty Name="id_manager" ColumnName="id_manager" />
+          <ScalarProperty Name="name_manager" ColumnName="name_manager" />
+          <ScalarProperty Name="email_manager" ColumnName="email_manager" />
+          <ScalarProperty Name="phone_number_manager" ColumnName="phone_number_manager" />
+          <ScalarProperty Name="password_manager" ColumnName="password_manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parents">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.parents">
+        <MappingFragment StoreEntitySet="parents">
+          <ScalarProperty Name="id_parent" ColumnName="id_parent" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="name_parent" ColumnName="name_parent" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="email_parent" ColumnName="email_parent" />
+          <ScalarProperty Name="paid_up" ColumnName="paid_up" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pictures">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.pictures">
+        <MappingFragment StoreEntitySet="pictures">
+          <ScalarProperty Name="id_pictures" ColumnName="id_pictures" />
+          <ScalarProperty Name="url_pic" ColumnName="url_pic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.products">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="name_product" ColumnName="name_product" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="price_product" ColumnName="price_product" />
+          <ScalarProperty Name="pic_product" ColumnName="pic_product" />
+          <ScalarProperty Name="id_pictures" ColumnName="id_pictures" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shops">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.shops">
+        <MappingFragment StoreEntitySet="shops">
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="name_shop" ColumnName="name_shop" />
+          <ScalarProperty Name="phone_shop" ColumnName="phone_shop" />
+          <ScalarProperty Name="email_shop" ColumnName="email_shop" />
+          <ScalarProperty Name="password_shop" ColumnName="password_shop" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_GIFTGROUPModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

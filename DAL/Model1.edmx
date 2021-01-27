@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_GIFTGROUPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_category" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gifts">
+          <Key>
+            <PropertyRef Name="id_gift" />
+          </Key>
+          <Property Name="id_product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_group" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="receiving_gift" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_gift" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id_group" />
+          </Key>
+          <Property Name="id_group" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_group" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_manager_group" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="collect_end" Type="bit" Nullable="false" />
+          <Property Name="password_group" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="manager">
+          <Key>
+            <PropertyRef Name="id_manager" />
+          </Key>
+          <Property Name="id_manager" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_manager" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_manager" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_number_manager" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password_manager" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parents">
+          <Key>
+            <PropertyRef Name="id_parent" />
+          </Key>
+          <Property Name="id_parent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_group" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_parent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_parent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="paid_up" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pictures">
+          <Key>
+            <PropertyRef Name="id_pictures" />
+          </Key>
+          <Property Name="id_pictures" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="url_pic" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id_product" />
+          </Key>
+          <Property Name="id_product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_shop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price_product" Type="money" Nullable="false" />
+          <Property Name="pic_product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_pictures" Type="nvarchar" MaxLength="50" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="id_category" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="shops">
+          <Key>
+            <PropertyRef Name="id_shop" />
+          </Key>
+          <Property Name="id_shop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_shop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_shop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_shop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password_shop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="logo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_gifts_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="gifts" Type="Self.gifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id_group" />
+            </Principal>
+            <Dependent Role="gifts">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gifts_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="gifts" Type="Self.gifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id_product" />
+            </Principal>
+            <Dependent Role="gifts">
+              <PropertyRef Name="id_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_manager">
+          <End Role="manager" Type="Self.manager" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manager">
+              <PropertyRef Name="id_manager" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_manager_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parents_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="parents" Type="Self.parents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id_group" />
+            </Principal>
+            <Dependent Role="parents">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_pictures">
+          <End Role="pictures" Type="Self.pictures" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pictures">
+              <PropertyRef Name="id_pictures" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_pictures" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_shops">
+          <End Role="shops" Type="Self.shops" Multiplicity="1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shops">
+              <PropertyRef Name="id_shop" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_shop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_GIFTGROUPModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gifts" EntityType="Self.gifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manager" EntityType="Self.manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parents" EntityType="Self.parents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pictures" EntityType="Self.pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shops" EntityType="Self.shops" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_gifts_groups" Association="Self.FK_gifts_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="gifts" EntitySet="gifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gifts_products" Association="Self.FK_gifts_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="gifts" EntitySet="gifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_manager" Association="Self.FK_groups_manager">
+            <End Role="manager" EntitySet="manager" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parents_groups" Association="Self.FK_parents_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="parents" EntitySet="parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_category" Association="Self.FK_products_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_pictures" Association="Self.FK_products_pictures">
+            <End Role="pictures" EntitySet="pictures" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_shops" Association="Self.FK_products_shops">
+            <End Role="shops" EntitySet="shops" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_GIFTGROUPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_category" FromRole="category" ToRole="products" />
+        </EntityType>
+        <EntityType Name="gifts">
+          <Key>
+            <PropertyRef Name="id_gift" />
+          </Key>
+          <Property Name="id_product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="receiving_gift" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_gift" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_gifts_groups" FromRole="gifts" ToRole="groups" />
+          <NavigationProperty Name="products" Relationship="Self.FK_gifts_products" FromRole="gifts" ToRole="products" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id_group" />
+          </Key>
+          <Property Name="id_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_manager_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="collect_end" Type="Boolean" Nullable="false" />
+          <Property Name="password_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="gifts" Relationship="Self.FK_gifts_groups" FromRole="groups" ToRole="gifts" />
+          <NavigationProperty Name="manager" Relationship="Self.FK_groups_manager" FromRole="groups" ToRole="manager" />
+          <NavigationProperty Name="parents" Relationship="Self.FK_parents_groups" FromRole="groups" ToRole="parents" />
+        </EntityType>
+        <EntityType Name="manager">
+          <Key>
+            <PropertyRef Name="id_manager" />
+          </Key>
+          <Property Name="id_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_number_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_manager" FromRole="manager" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="parents">
+          <Key>
+            <PropertyRef Name="id_parent" />
+          </Key>
+          <Property Name="id_parent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_parent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email_parent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="paid_up" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_parents_groups" FromRole="parents" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="pictures">
+          <Key>
+            <PropertyRef Name="id_pictures" />
+          </Key>
+          <Property Name="id_pictures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="url_pic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_pictures" FromRole="pictures" ToRole="products" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id_product" />
+          </Key>
+          <Property Name="id_product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_shop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price_product" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="pic_product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_pictures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="id_category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rating" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="Self.FK_products_category" FromRole="products" ToRole="category" />
+          <NavigationProperty Name="gifts" Relationship="Self.FK_gifts_products" FromRole="products" ToRole="gifts" />
+          <NavigationProperty Name="pictures" Relationship="Self.FK_products_pictures" FromRole="products" ToRole="pictures" />
+          <NavigationProperty Name="shops" Relationship="Self.FK_products_shops" FromRole="products" ToRole="shops" />
+        </EntityType>
+        <EntityType Name="shops">
+          <Key>
+            <PropertyRef Name="id_shop" />
+          </Key>
+          <Property Name="id_shop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_shop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_shop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email_shop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password_shop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_shops" FromRole="shops" ToRole="products" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_products_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gifts_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="gifts" Type="Self.gifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id_group" />
+            </Principal>
+            <Dependent Role="gifts">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gifts_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="gifts" Type="Self.gifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id_product" />
+            </Principal>
+            <Dependent Role="gifts">
+              <PropertyRef Name="id_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_manager">
+          <End Role="manager" Type="Self.manager" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manager">
+              <PropertyRef Name="id_manager" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_manager_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parents_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="parents" Type="Self.parents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id_group" />
+            </Principal>
+            <Dependent Role="parents">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_pictures">
+          <End Role="pictures" Type="Self.pictures" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pictures">
+              <PropertyRef Name="id_pictures" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_pictures" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_shops">
+          <End Role="shops" Type="Self.shops" Multiplicity="1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shops">
+              <PropertyRef Name="id_shop" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_shop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_GIFTGROUPEntities41" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="category" EntityType="Self.category" />
+          <EntitySet Name="gifts" EntityType="Self.gifts" />
+          <EntitySet Name="groups" EntityType="Self.groups" />
+          <EntitySet Name="manager" EntityType="Self.manager" />
+          <EntitySet Name="parents" EntityType="Self.parents" />
+          <EntitySet Name="pictures" EntityType="Self.pictures" />
+          <EntitySet Name="products" EntityType="Self.products" />
+          <EntitySet Name="shops" EntityType="Self.shops" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_products_category" Association="Self.FK_products_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gifts_groups" Association="Self.FK_gifts_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="gifts" EntitySet="gifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gifts_products" Association="Self.FK_gifts_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="gifts" EntitySet="gifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_manager" Association="Self.FK_groups_manager">
+            <End Role="manager" EntitySet="manager" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parents_groups" Association="Self.FK_parents_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="parents" EntitySet="parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_pictures" Association="Self.FK_products_pictures">
+            <End Role="pictures" EntitySet="pictures" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_shops" Association="Self.FK_products_shops">
+            <End Role="shops" EntitySet="shops" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_GIFTGROUPModelStoreContainer" CdmEntityContainer="DB_GIFTGROUPEntities41">
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="name_category" ColumnName="name_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gifts">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.gifts">
+              <MappingFragment StoreEntitySet="gifts">
+                <ScalarProperty Name="id_product" ColumnName="id_product" />
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="receiving_gift" ColumnName="receiving_gift" />
+                <ScalarProperty Name="id_gift" ColumnName="id_gift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.groups">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="name_group" ColumnName="name_group" />
+                <ScalarProperty Name="id_manager_group" ColumnName="id_manager_group" />
+                <ScalarProperty Name="collect_end" ColumnName="collect_end" />
+                <ScalarProperty Name="password_group" ColumnName="password_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manager">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.manager">
+              <MappingFragment StoreEntitySet="manager">
+                <ScalarProperty Name="id_manager" ColumnName="id_manager" />
+                <ScalarProperty Name="name_manager" ColumnName="name_manager" />
+                <ScalarProperty Name="email_manager" ColumnName="email_manager" />
+                <ScalarProperty Name="phone_number_manager" ColumnName="phone_number_manager" />
+                <ScalarProperty Name="password_manager" ColumnName="password_manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parents">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.parents">
+              <MappingFragment StoreEntitySet="parents">
+                <ScalarProperty Name="id_parent" ColumnName="id_parent" />
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="name_parent" ColumnName="name_parent" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email_parent" ColumnName="email_parent" />
+                <ScalarProperty Name="paid_up" ColumnName="paid_up" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.pictures">
+              <MappingFragment StoreEntitySet="pictures">
+                <ScalarProperty Name="id_pictures" ColumnName="id_pictures" />
+                <ScalarProperty Name="url_pic" ColumnName="url_pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.products">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="id_product" ColumnName="id_product" />
+                <ScalarProperty Name="name_product" ColumnName="name_product" />
+                <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+                <ScalarProperty Name="price_product" ColumnName="price_product" />
+                <ScalarProperty Name="pic_product" ColumnName="pic_product" />
+                <ScalarProperty Name="id_pictures" ColumnName="id_pictures" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shops">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.shops">
+              <MappingFragment StoreEntitySet="shops">
+                <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+                <ScalarProperty Name="name_shop" ColumnName="name_shop" />
+                <ScalarProperty Name="phone_shop" ColumnName="phone_shop" />
+                <ScalarProperty Name="email_shop" ColumnName="email_shop" />
+                <ScalarProperty Name="password_shop" ColumnName="password_shop" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_GIFTGROUPModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\CONVERTERS.dll
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\CONVERTERS.pdb
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\CONVERTERS.csprojAssemblyReference.cache
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\CONVERTERS.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\CONVERTERS.dll
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\CONVERTERS.pdb
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\DAL.dll
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\DTO.dll
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\DAL.pdb
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\DAL.dll.config
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\DTO.pdb
+C:\Users\User\source\repos\webapi\CONVERTERS\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\Interop.Accessibility.dll
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\CONVERTERS.csproj.ResolveComReference.cache
+C:\Users\User\source\repos\webapi\CONVERTERS\obj\Debug\CONVERTERS.csproj.CopyComplete
