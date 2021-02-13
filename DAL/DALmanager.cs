@@ -37,7 +37,7 @@ namespace DAL
                     m.groups.Add(new groups()
                     {
                         id_group = idg.ToString(),
-                        id_manager_group = m.id_manager,
+                       id_manager_group = m.id_manager,
                         collect_end = false,
                         password_group="adminstator",
                         name_group="adminstator"
@@ -62,3 +62,4 @@ namespace DAL
         }
     }
 }
+
