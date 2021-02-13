@@ -44,6 +44,7 @@
     <Compile Include="category.cs" />
     <Compile Include="gifts.cs" />
     <Compile Include="groups.cs" />
+    <Compile Include="mail.cs" />
     <Compile Include="manager.cs" />
     <Compile Include="parents.cs" />
     <Compile Include="pictures.cs" />

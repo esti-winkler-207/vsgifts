@@ -13,10 +13,10 @@ namespace WebAPI5.Controllers
         public static List<Image> LImages = new List<Image>();
         
         [HttpGet]
-        [Route("ga")]
+        [Route("getall")]
         public IHttpActionResult getall()
         {
-            LImages.Add(new Image() { src = "df", file = 456789 });
+            //LImages.Add(new Image() { src = "df", file = 456789 });
             return Ok(LImages);
         }
         [HttpPost]
