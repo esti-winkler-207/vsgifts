@@ -12,6 +12,10 @@ namespace BLL
         {
             return CONVERTERS.Cgroups.ConvertToDTOgroupList(DAL.DALgroup.getallgroups());
         }
+        public static DTO.groups getByPwd(string pwd)
+        {
+            return CONVERTERS.Cgroups.ConvertToDTOgroup(DAL.DALgroup.getByPWD(pwd));
+        }
 
         public static List<DTO.groups> Addgroup(DTO.groups g1)
         {

@@ -31,6 +31,14 @@ namespace DAL
                 return db.groups.First(g => g.id_manager_group == id);
             } 
         }
+        public static groups getByPWD(string pwd)
+        {
+            using (DB_GIFTGROUPEntities41 db = new DB_GIFTGROUPEntities41())
+            {
+                return db.groups.First(g => g.password_group == pwd);
+            }
+        }
+
 
         public static groups updateGroup(DAL.groups g)
         {

@@ -17,6 +17,13 @@ namespace WebAPI5.Controllers
         {
             return Ok(BLL.BLLgroups.getallgroups());
         }
+        [HttpGet]
+        [Route("getByPwd/{pwd}")]
+        public IHttpActionResult getByPwd(string pwd)
+        {
+            return Ok(BLL.BLLgroups.getByPwd(pwd));
+
+        }
         
         //[HttpPost]
         //[Route("Addgroup")]
