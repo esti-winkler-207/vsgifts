@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BLLgroups.cs" />
     <Compile Include="BLLmanager.cs" />
+    <Compile Include="BLLparents.cs" />
     <Compile Include="BLLproducts.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
