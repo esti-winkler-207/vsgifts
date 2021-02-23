@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLgroups.cs" />
+    <Compile Include="BLLmail.cs" />
     <Compile Include="BLLmanager.cs" />
     <Compile Include="BLLparents.cs" />
     <Compile Include="BLLproducts.cs" />

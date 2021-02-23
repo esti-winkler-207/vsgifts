@@ -16,5 +16,12 @@ namespace WebAPI5.Controllers
         {
             return Ok(BLL.BLLparents.addParent(p));
         }
+        [HttpGet]
+        [Route("getByIdGroup/{id}")]
+        public IHttpActionResult getByIdGroup(string id)
+        {
+            return Ok(BLL.BLLparents.getByIdGroup(id));
+        }
+
     }
 }

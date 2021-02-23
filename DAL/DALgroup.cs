@@ -35,7 +35,7 @@ namespace DAL
         {
             using (DB_GIFTGROUPEntities41 db = new DB_GIFTGROUPEntities41())
             {
-                return db.groups.First(g => g.password_group == pwd);
+              return db.groups.First(g => g.password_group == pwd);
             }
         }
 
